@@ -8,7 +8,12 @@ class URL extends Model
 {
     public function save(array $options = [])
     {
+        // hash and make the url unique
         $this->hash = URL::hashUrl($this->url);
+        if ($this->where('hash', $this->hash)->get()->count())
+        {
+            return false;
+        }
         return parent::save($options);
     }
 

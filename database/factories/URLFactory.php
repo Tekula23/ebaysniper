@@ -5,6 +5,6 @@ use \App\URL;
 
 $factory->define(URL::class, function (Faker $faker) {
     return [
-        //
+        'url' => $faker->url,
     ];
 });
