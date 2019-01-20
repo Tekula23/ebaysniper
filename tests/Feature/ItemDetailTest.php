@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\URL;
+use App\Item;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -41,6 +42,23 @@ class ItemDetailTest extends TestCase
         $response = $this->get('/items/search/'.$savedUrl->uuid);
 
         $response->assertSee('Item Details');
+    }
+
+    public function test_detail_has_item_name()
+    {
+        $url = factory(URL::class)->create();
+        $item = factory(Item::class)->make([
+            'title' => 'This fantastic blender',
+        ]);
+        $item->url()->save($url);
+
+        // the item is not saved!
+        dd($item->url()->uuid);
+
+        $this->get('/items/search/'.$item->url()->uuid)
+            ->assertSee('This fantastic blender');
 
     }
+
+
 }

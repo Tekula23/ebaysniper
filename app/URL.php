@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class URL extends Model
 {
+
     public function save(array $options = [])
     {
         // hash and make the url unique
