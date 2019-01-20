@@ -16,8 +16,7 @@ class ItemsController extends Controller
         if (!$exists) {
             return redirect('/');
         }
-        return response()->json([
-            'time_remaining' => '10m',
-        ]);
+
+        return view('items.show');
     }
 }
