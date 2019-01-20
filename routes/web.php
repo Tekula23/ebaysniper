@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('/items/search/{url_id}', 'ItemsController@search');
+Route::get('/items/search/{url_uuid}', 'ItemsController@search');

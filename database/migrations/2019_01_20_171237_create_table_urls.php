@@ -18,6 +18,7 @@ class CreateTableUrls extends Migration
             $table->string('url');
             $table->string('hash');
             $table->index('hash');
+            $table->uuid('uuid');
             $table->timestamps();
         });
     }
