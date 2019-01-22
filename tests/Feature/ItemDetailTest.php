@@ -47,15 +47,12 @@ class ItemDetailTest extends TestCase
     public function test_detail_has_item_name()
     {
         $url = factory(URL::class)->create();
-        $item = factory(Item::class)->make([
+        $item = factory(Item::class)->create([
             'title' => 'This fantastic blender',
+            'url_id' => $url,
         ]);
-        $item->url()->save($url);
 
-        // the item is not saved!
-        dd($item->url()->uuid);
-
-        $this->get('/items/search/'.$item->url()->uuid)
+        $this->get('/items/search/'.$item->url->uuid)
             ->assertSee('This fantastic blender');
 
     }

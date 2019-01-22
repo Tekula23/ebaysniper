@@ -8,6 +8,6 @@ class Item extends Model
 {
     public function url()
     {
-        return $this->hasOne(URL::class);
+        return $this->belongsTo(URL::class);
     }
 }

@@ -10,13 +10,12 @@ class ItemsController extends Controller
 
     function search($url_uuid)
     {
-        /** @var URL $url */
-        $exists = URL::where('uuid', $url_uuid)->get()->count();
-
-        if (!$exists) {
+        $url = URL::where('uuid', $url_uuid);
+        
+        if ($url->get()->count() < 1) {
             return redirect('/');
         }
 
-        return view('items.show');
+        return view('items.show', ['url' => $url->first()]);
     }
 }
